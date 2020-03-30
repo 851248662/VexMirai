@@ -39,15 +39,15 @@ public class Vex extends PluginBase {
         });
     }
     public ExternalImage getFoodImg() {
-        if(!(System.currentTimeMillis()-lastUpdate<600)){
-            Request req = Request.create("https://www.xinshipu.com", Request.METHOD.GET);
-            Sender sender=Sender.create(req);
+        if (!(System.currentTimeMillis() - lastUpdate < Vex.conf.getInt("CacheDelay") * 1000)) {
+            Request req = Request.create(Vex.conf.getString("Site"), Request.METHOD.GET);
+            Sender sender = Sender.create(req);
             sender.send(response -> {
-                cachedImgUrls=getImgUrls(response.getContent());
+                cachedImgUrls = getImgUrls(response.getContent());
             });
-            lastUpdate=System.currentTimeMillis();
+            lastUpdate = System.currentTimeMillis();
         }
-        ExternalImage img= null;
+        ExternalImage img = null;
         try {
             img = ExternalImageJvmKt.toExternalImage(new URL(cachedImgUrls.get(rand.nextInt(cachedImgUrls.size()))));
         } catch (IOException e) {

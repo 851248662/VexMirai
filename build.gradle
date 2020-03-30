@@ -9,6 +9,7 @@ version = 'V0.1.0'
 
 repositories {
     maven { url 'https://mirrors.huaweicloud.com/repository/maven' }
+    maven { setUrl("https://dl.bintray.com/kotlin/kotlin-eap") }
     jcenter()
 }
 
