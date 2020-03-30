@@ -1,0 +1,3 @@
+
+(gsd-xsettings:15014): xsettings-plugin-WARNING **: 16:10:10.290: You can only run one xsettings manager at a time; exiting
+Failed to start: Could not initialize xsettings manager.
