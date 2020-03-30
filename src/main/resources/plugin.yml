@@ -1,0 +1,7 @@
+name: "VexMirai"
+author: "iceBear67"
+version: "V0.1.0"
+main: "com.github.icebear67.Vex"
+info: "Send delicious(maybe) food images for members who keep activity at deep night."
+depends: 
+  -
