@@ -1,8 +1,8 @@
 package com.github.icebear67;
 
 import net.mamoe.mirai.message.GroupMessage;
-import net.mamoe.mirai.message.data.MessageUtils;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -33,14 +33,15 @@ public class MessageHandler {
             return;
         }
         lastUsed.put(message.getSender().getId(), System.currentTimeMillis());
-        message.getGroup().sendMessage(MessageUtils.newImage(vex.getFoodImg().calculateImageResourceId()));
+        message.getGroup().sendMessage(message.getGroup().uploadImage(vex.getFoodImg()));
     }
 
     public void tryKill(GroupMessage message) {
         messagesCount.put(message.getSender().getId(), messagesCount.getOrDefault(message.getSender().getId(), 0) + 1);
         int counter = messagesCount.get(message.getSender().getId());
         if (counter == Vex.conf.getInt("Trigger")) {
-            message.getGroup().sendMessage(MessageUtils.newImage(vex.getFoodImg().calculateImageResourceId()));
+            URL url = vex.getFoodImg();
+            message.getGroup().sendMessage(message.getGroup().uploadImage(url));
         }
     }
 
