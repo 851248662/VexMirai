@@ -1,2 +1,0 @@
-# VexMirai
-kill the human
